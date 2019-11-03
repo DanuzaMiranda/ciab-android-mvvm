@@ -32,6 +32,7 @@ import static android.support.constraint.Constraints.TAG;
 import static com.everis.ciabapp.view.CadastroFragment.EXTRA_ID_USUARIO;
 
 public class HUBActivity extends AppCompatActivity {
+
     private Handler handler = new Handler();
     private TextView saldo;
     private int id;
