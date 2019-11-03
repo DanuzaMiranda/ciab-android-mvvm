@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Spannable;
@@ -31,12 +32,12 @@ import static android.support.constraint.Constraints.TAG;
 import static com.everis.ciabapp.view.CadastroFragment.EXTRA_ID_USUARIO;
 
 public class HUBActivity extends AppCompatActivity {
-
     private Handler handler = new Handler();
     private TextView saldo;
     private int id;
     private CadastroVO cadastroVO;
     private API mAPI;
+    private Fragment cadastroFragment;
     public static final String EXTRA_CREDITOR_ID = "EXTRA_CREDITOR_ID";
     Runnable updateCurrency = new Runnable() {
         public void run() {
@@ -72,32 +73,37 @@ public class HUBActivity extends AppCompatActivity {
         saldo = findViewById(R.id.tv_saldo_evercoins);
         saldo.setLetterSpacing((float) 0.1);
 
-        Button btCoffee = findViewById(R.id.bt_hub_coffee);
-        Button btCard = findViewById(R.id.bt_hub_card);
-        Button btPig = findViewById(R.id.bt_hud_pig);
-        Button btPub = findViewById(R.id.bt_hud_pub);
-        Button btTransfer = findViewById(R.id.bt_hud_transfer);
-        Button btGift = findViewById(R.id.bt_hub_gift);
+        View btTarvel= findViewById(R.id.bt_hub_travel);
+        View btBuilding = findViewById(R.id.bt_hub_building);
+        View btPersonal = findViewById(R.id.bt_hub_building);
+        View btInvoice = findViewById(R.id.bt_hub_invoice);
+        Button btGift = findViewById(R.id.bt_hub_facePay);
         Button btLogout = findViewById(R.id.bt_hud_logout);
 
-        btGift.setText(misturarFontes("Take your", "gift", true));
-        btCoffee.setText(misturarFontes("Rethinking", "the cities - Checkpoint", false));
-        btCard.setText(misturarFontes("Shifting", "the world", false));
-        btPig.setText(misturarFontes("Shifting", "the world - Checkpoint", false));
-        btPub.setText(misturarFontes("Connecting", "people - Checkpoint", false));
-        btTransfer.setText(misturarFontes("Connecting", "people", false));
+        btGift.setText(misturarFontes("Face", "Pay", true));
+//        btTransfer.setText(misturarFontes("Connecting", "people", false));
 
-        btCoffee.setOnClickListener(new View.OnClickListener() {
+        btTarvel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HUBActivity.this, UnityPlayerActivity.class);
-                intent.putExtra("sceneName", "CoffeeScene");
+
+                startActivity(intent);
+                //web apliccation
+            }
+        });
+
+        btBuilding.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HUBActivity.this, UnityPlayerActivity.class);
+                intent.putExtra("sceneName", "Financing");
                 intent.putExtra("playerID", id);
                 startActivity(intent);
             }
         });
 
-        btCard.setOnClickListener(new View.OnClickListener() {
+        btPersonal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HUBActivity.this, UnityPlayerActivity.class);
@@ -107,31 +113,12 @@ public class HUBActivity extends AppCompatActivity {
             }
         });
 
-        btPig.setOnClickListener(new View.OnClickListener() {
+        btInvoice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HUBActivity.this, UnityPlayerActivity.class);
-                intent.putExtra("sceneName", "PigScene");
+                intent.putExtra("sceneName", "Conta_ARScene");
                 intent.putExtra("playerID", id);
-                startActivity(intent);
-            }
-        });
-
-        btPub.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HUBActivity.this, UnityPlayerActivity.class);
-                intent.putExtra("sceneName", "PubScene");
-                intent.putExtra("playerID", id);
-                startActivity(intent);
-            }
-        });
-
-        btTransfer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HUBActivity.this, TransferActivity.class);
-                intent.putExtra(EXTRA_CREDITOR_ID, id);
                 startActivity(intent);
             }
         });
@@ -139,7 +126,9 @@ public class HUBActivity extends AppCompatActivity {
         btGift.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finishJourney();
+                Intent intent = new Intent(HUBActivity.this, TransferActivity.class);
+                intent.putExtra(EXTRA_CREDITOR_ID, id);
+                startActivity(intent);
             }
         });
 
@@ -229,38 +218,19 @@ public class HUBActivity extends AppCompatActivity {
     private void logoutConfirmation() {
         AlertDialog.Builder builder = new AlertDialog.Builder(HUBActivity.this);
         builder.setCancelable(true);
-        builder.setTitle("Confirmar Saída");
-        builder.setMessage("Você realmente quer encerrar sua jornada?");
-        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+        builder.setTitle("Confirm Check Out");
+        builder.setMessage("Do you really want to end your journey?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(HUBActivity.this, OnboardActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-            }
-        });
-        AlertDialog dialog = builder.create();
-        dialog.show();
-    }
-
-    private void finishJourney() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(HUBActivity.this);
-        builder.setCancelable(true);
-        builder.setTitle("Finalizar Jornada");
-        builder.setMessage("Deseja retirar seu brinde e encerrar a jornada?");
-        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
                 cadastroVO.setSaldo(0);
                 endJourney(id, cadastroVO);
+                startActivity(intent);
+
             }
         });
-        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
             }
