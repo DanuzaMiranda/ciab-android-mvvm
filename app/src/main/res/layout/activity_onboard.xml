@@ -1,0 +1,100 @@
+<com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:sothree="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sul_onboard"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/everis_background"
+    android:gravity="bottom"
+    android:screenOrientation="portrait"
+    sothree:umanoFadeColor="@android:color/transparent"
+    sothree:umanoOverlay="true"
+    sothree:umanoPanelHeight="90dp"
+    sothree:umanoShadowHeight="0dp">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="550dp">
+
+        <com.synnapps.carouselview.CarouselView
+            android:id="@+id/crv_onboard_carousel_inicio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            sothree:fillColor="@color/branco"
+            sothree:layout_constraintEnd_toEndOf="parent"
+            sothree:layout_constraintStart_toStartOf="parent"
+            sothree:layout_constraintTop_toTopOf="parent"
+            sothree:radius="6dp"
+            sothree:slideInterval="0"
+            sothree:strokeColor="@color/branco"
+            sothree:strokeWidth="1dp" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cl_onboard_tela_cadastro"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:background="@drawable/rounded_top"
+        android:backgroundTint="@color/branco"
+        android:elevation="24dp">
+
+        <ImageView
+            android:id="@+id/iv_onboard_seta_cima"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:contentDescription="@null"
+            android:scaleType="fitXY"
+            android:src="@drawable/everis_seta"
+            sothree:layout_constraintEnd_toEndOf="parent"
+            sothree:layout_constraintStart_toStartOf="parent"
+            sothree:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cl_onboard_connect_to_the_future"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            sothree:layout_constraintEnd_toEndOf="parent"
+            sothree:layout_constraintStart_toStartOf="parent"
+            sothree:layout_constraintTop_toBottomOf="@+id/iv_onboard_seta_cima">
+
+            <TextView
+                android:id="@+id/tv_onboard_connect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/helvetica_neue_thin"
+                android:text="@string/onboard_connect"
+                android:textColor="@color/preto"
+                android:textSize="16sp"
+                sothree:layout_constraintEnd_toStartOf="@+id/tv_onboard_future"
+                sothree:layout_constraintStart_toStartOf="parent"
+                sothree:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_onboard_future"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:fontFamily="@font/helvetica_neue_bold"
+                android:text="@string/onboard_future"
+                android:textColor="@color/preto"
+                android:textSize="16sp"
+                sothree:layout_constraintStart_toEndOf="@+id/tv_onboard_connect"
+                sothree:layout_constraintTop_toTopOf="@+id/tv_onboard_connect" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_onboard_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="24dp"
+            sothree:layout_constraintEnd_toEndOf="parent"
+            sothree:layout_constraintStart_toStartOf="parent"
+            sothree:layout_constraintTop_toBottomOf="@+id/cl_onboard_connect_to_the_future" />
+
+    </android.support.constraint.ConstraintLayout>
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>

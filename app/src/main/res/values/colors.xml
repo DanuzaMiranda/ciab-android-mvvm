@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    --- CIAB COLORS ---
+
+    <color name="branco">#ffff</color>
+    <color name="branco_cinza">#f2f2f2</color>
+    <color name="preto">#000</color>
+    <color name="cinza">#BABABA</color>
+    <color name="cinza_escuro">#4f4f4f</color>
+    <color name="verde_everis">#9aae04</color>
+    <color name="cinza_claro">#DDD</color>
+    <color name="transparente">#0FFF</color>
+    <color name="azul_escuro">#116798</color>
+
+</resources>
+
+

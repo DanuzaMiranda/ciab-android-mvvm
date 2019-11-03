@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">CIAB</string>
+
+    --- Onboard ---
+    <string name="onboard_connect">Connect to the </string>
+    <string name="onboard_future">future</string>
+
+    --- Cadastro ---
+    <string name="cadastro_tire_foto">Tire uma\nfoto sua</string>
+    <string name="cadastro_nome_completo">Nome</string>
+    <string name="cadastro_empresa">Empresa</string>
+    <string name="cadastro_email">E-mail</string>
+    <string name="cadastro_botao_cadastrar">cadastrar</string>
+    <string name="cadastro_botao_login">login</string>
+    <string name="cadastro_botao_scan">Escanear Crachá</string>
+
+    --- Cadastro ---
+    <string name="login_insira">Insira um e-mail:</string>
+    <string name="login_email">E-mail</string>
+    <string name="login_logar">logar</string>
+
+    --- HUB ---
+    <string name="hub_total_evercoins">TOTAL EVERCOINS</string>
+    <string name="hub_evercoins_cifrao">C$</string>
+    <string name="hub_botao_gift">Take your gift\u0020</string>
+    <string name="hub_rethinking_the_cities">Rethinking the cities\u0020</string>
+    <string name="hub_shifting_the_world">Shifting the world\u0020</string>
+    <string name="hub_connecting_people">Connecting people\u0020</string>
+    <string name="hub_log_out">Log out \u0020 \u0020 ✖︎</string>
+    <string name="hub_check_symbol">\u2714</string>
+
+    --- End ---
+    <string name="end_everis_journey">Your journey is</string>
+    <string name="end_completed">complete.</string>
+    <string name="end_welcome">Welcome to the next level.</string>
+    <string name="end_botao_voltar">voltar ao início</string>
+
+</resources>

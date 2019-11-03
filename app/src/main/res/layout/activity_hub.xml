@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:screenOrientation="portrait"
+    android:layout_height="match_parent"
+    android:background="@drawable/everis_background"
+    tools:context=".view.HUBActivity">
+
+    <ImageView
+        android:id="@+id/iv_hub_logo_everis"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="20dp"
+        android:contentDescription="@null"
+        android:src="@drawable/everis_logo_branca"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/iv_hub_title"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="12dp"
+        android:alpha="0.7"
+        app:cardBackgroundColor="@color/branco"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/cv_hub_atividades"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_hub_logo_everis"
+        app:layout_constraintVertical_weight="5" />
+
+    <ImageView
+        android:id="@+id/iv_hub_cartao_everis"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="18dp"
+        android:contentDescription="@null"
+        android:elevation="2dp"
+        android:src="@drawable/everis_cartao"
+        app:layout_constraintStart_toStartOf="@id/iv_hub_title"
+        app:layout_constraintTop_toTopOf="@id/iv_hub_title" />
+
+    <TextView
+        android:id="@+id/tv_hub_total_evercoins"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="12dp"
+        android:elevation="2dp"
+        android:fontFamily="@font/helvetica_neue_bold"
+        android:text="@string/hub_total_evercoins"
+        android:textColor="@color/cinza_escuro"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/iv_hub_title"
+        app:layout_constraintStart_toStartOf="@id/iv_hub_title"
+        app:layout_constraintTop_toBottomOf="@id/iv_hub_cartao_everis" />
+
+    <TextView
+        android:id="@+id/tv_saldo_evercoins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="8dp"
+        android:elevation="2dp"
+        android:fontFamily="@font/helvetica_neue_bold"
+        android:textColor="@color/azul_escuro"
+        android:textSize="52sp"
+        app:layout_constraintBottom_toTopOf="@+id/bt_hub_gift"
+        app:layout_constraintEnd_toStartOf="@id/tv_hub_cifrao"
+        app:layout_constraintStart_toStartOf="@id/tv_hub_total_evercoins"
+        app:layout_constraintTop_toBottomOf="@+id/tv_hub_total_evercoins"
+        tools:text="9999" />
+
+    <TextView
+        android:id="@+id/tv_hub_cifrao"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:elevation="2dp"
+        android:fontFamily="@font/helvetica_neue_bold"
+        android:text="@string/hub_evercoins_cifrao"
+        android:textColor="@color/azul_escuro"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_saldo_evercoins"
+        app:layout_constraintEnd_toEndOf="@id/iv_hub_title"
+        app:layout_constraintStart_toEndOf="@+id/tv_saldo_evercoins" />
+
+    <Button
+        android:id="@+id/bt_hub_gift"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/drawable_hub_btn_gift"
+        android:drawableStart="@drawable/everis_bolsa"
+        android:fontFamily="@font/helvetica_neue_thin"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text="@string/hub_botao_gift"
+        android:textAlignment="textEnd"
+        android:textAllCaps="false"
+        android:textColor="@color/preto"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_hub_title"
+        app:layout_constraintEnd_toEndOf="@id/iv_hub_title"
+        app:layout_constraintStart_toStartOf="@id/iv_hub_title" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv_hub_atividades"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="60dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_hub_title"
+        app:layout_constraintVertical_weight="6">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/drawable_hub_bg_buttons">
+
+            <Button
+                android:id="@+id/bt_hub_coffee"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/drawable_hub_btn_gradient"
+                android:drawableStart="@drawable/everis_xicara"
+                android:fontFamily="@font/helvetica_neue_thin"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="@string/hub_rethinking_the_cities"
+                android:drawablePadding="24dp"
+                android:textAlignment="textStart"
+                android:textAllCaps="false"
+                android:textColor="@color/preto"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@id/bt_hub_card"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/bt_hub_card"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/drawable_hub_btn_gradient"
+                android:drawableStart="@drawable/everis_dinheiro"
+                android:fontFamily="@font/helvetica_neue_thin"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:drawablePadding="24dp"
+                android:text="@string/hub_shifting_the_world"
+                android:textAlignment="textStart"
+                android:textAllCaps="false"
+                android:textColor="@color/preto"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@id/bt_hud_pig"
+                app:layout_constraintTop_toBottomOf="@+id/bt_hub_coffee" />
+
+            <Button
+                android:id="@+id/bt_hud_pig"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/drawable_hub_btn_gradient"
+                android:drawableStart="@drawable/everis_porco"
+                android:fontFamily="@font/helvetica_neue_thin"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="@string/hub_shifting_the_world"
+                android:drawablePadding="24dp"
+                android:textAlignment="textStart"
+                android:textAllCaps="false"
+                android:textColor="@color/preto"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@id/bt_hud_pub"
+                app:layout_constraintTop_toBottomOf="@id/bt_hub_card" />
+
+            <Button
+                android:id="@+id/bt_hud_pub"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/drawable_hub_btn_gradient"
+                android:drawableStart="@drawable/everis_copo"
+                android:fontFamily="@font/helvetica_neue_thin"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="@string/hub_connecting_people"
+                android:drawablePadding="24dp"
+                android:textAlignment="textStart"
+                android:textAllCaps="false"
+                android:textColor="@color/preto"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@id/bt_hud_transfer"
+                app:layout_constraintTop_toBottomOf="@id/bt_hud_pig" />
+
+            <Button
+                android:id="@+id/bt_hud_transfer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/drawable_hub_btn_gradient_last"
+                android:drawableStart="@drawable/everis_personal"
+                android:fontFamily="@font/helvetica_neue_thin"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="@string/hub_connecting_people"
+                android:drawablePadding="24dp"
+                android:textAlignment="textStart"
+                android:textAllCaps="false"
+                android:textColor="@color/preto"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/bt_hud_pub" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+
+    <Button
+        android:id="@+id/bt_hud_logout"
+        android:layout_width="88dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="12dp"
+        android:background="@color/transparente"
+        android:fontFamily="@font/helvetica_neue_bold"
+        android:text="@string/hub_log_out"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_hub_atividades" />
+</android.support.constraint.ConstraintLayout>
