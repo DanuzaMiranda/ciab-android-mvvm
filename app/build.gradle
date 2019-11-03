@@ -37,6 +37,6 @@ dependencies {
     //Add
     implementation 'com.github.santalu:mask-edittext:1.0.2'
     //AR
-    implementation project(':VuforiaWrapper')
-    implementation project(':jornada')
+//    implementation project(':VuforiaWrapper')
+//    implementation project(':jornada')
 }

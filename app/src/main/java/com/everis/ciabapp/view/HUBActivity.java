@@ -17,7 +17,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.everis.ciab.UnityPlayerActivity;
+//import com.everis.ciab.UnityPlayerActivity;
 import com.everis.ciabapp.R;
 import com.everis.ciabapp.model.CadastroVO;
 import com.everis.ciabapp.viewmodel.API;
@@ -84,45 +84,45 @@ public class HUBActivity extends AppCompatActivity {
         btGift.setText(misturarFontes("Face", "Pay", true));
 //        btTransfer.setText(misturarFontes("Connecting", "people", false));
 
-        btTarvel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HUBActivity.this, UnityPlayerActivity.class);
-
-                startActivity(intent);
-                //web apliccation
-            }
-        });
-
-        btBuilding.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HUBActivity.this, UnityPlayerActivity.class);
-                intent.putExtra("sceneName", "Financing");
-                intent.putExtra("playerID", id);
-                startActivity(intent);
-            }
-        });
-
-        btPersonal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HUBActivity.this, UnityPlayerActivity.class);
-                intent.putExtra("sceneName", "CardScene");
-                intent.putExtra("playerID", id);
-                startActivity(intent);
-            }
-        });
-
-        btInvoice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HUBActivity.this, UnityPlayerActivity.class);
-                intent.putExtra("sceneName", "Conta_ARScene");
-                intent.putExtra("playerID", id);
-                startActivity(intent);
-            }
-        });
+//        btTarvel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(HUBActivity.this, UnityPlayerActivity.class);
+//
+//                startActivity(intent);
+//                //web apliccation
+//            }
+//        });
+//
+//        btBuilding.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(HUBActivity.this, UnityPlayerActivity.class);
+//                intent.putExtra("sceneName", "Financing");
+//                intent.putExtra("playerID", id);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        btPersonal.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(HUBActivity.this, UnityPlayerActivity.class);
+//                intent.putExtra("sceneName", "CardScene");
+//                intent.putExtra("playerID", id);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        btInvoice.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(HUBActivity.this, UnityPlayerActivity.class);
+//                intent.putExtra("sceneName", "Conta_ARScene");
+//                intent.putExtra("playerID", id);
+//                startActivity(intent);
+//            }
+//        });
 
         btGift.setOnClickListener(new View.OnClickListener() {
             @Override
