@@ -33,6 +33,7 @@ import com.everis.ciabapp.R;
 import com.everis.ciabapp.model.CadastroVO;
 import com.everis.ciabapp.viewmodel.API;
 import com.everis.ciabapp.viewmodel.APIUtils;
+import com.santalu.maskedittext.MaskEditText;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -58,10 +59,11 @@ public class CadastroFragment extends Fragment {
 
     private EditText etCadastroNome;
     private EditText etCadastroEmpresa;
+    private EditText etCadastroPhone;
     private EditText etCadastroEmail;
     private CircleImageView btTirarFoto;
     private Button btCadastrar;
-    private Button btScan;
+    //private Button btScan;
     private Button btLogin;
     private ProgressBar progressBar;
     private View view;
@@ -78,6 +80,7 @@ public class CadastroFragment extends Fragment {
     private String ocr;
 
     private MultipartBody.Part body;
+    private MaskEditText editText;
 
     public static final int REQUEST_IMAGE_CAPTURE = 1;
     private Uri fotoURI;
@@ -93,6 +96,7 @@ public class CadastroFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_cadastro, container, false);
         initVariable();
         return view;
+
     }
 
     private void initVariable() {
@@ -102,7 +106,11 @@ public class CadastroFragment extends Fragment {
         etCadastroNome = view.findViewById(R.id.et_cadastro_nome);
         etCadastroEmpresa = view.findViewById(R.id.et_cadastro_empresa);
         etCadastroEmail = view.findViewById(R.id.et_cadastro_email);
+        etCadastroPhone = view.findViewById(R.id.et_cadastro_phone);
         infoFoto = view.findViewById(R.id.cl_cadastro_info_botao);
+        editText = view.findViewById(R.id.et_cadastro_phone);
+
+
 
         btTirarFoto = view.findViewById(R.id.civ_cadastro_foto);
         btTirarFoto.setOnClickListener(new View.OnClickListener() {
@@ -112,38 +120,41 @@ public class CadastroFragment extends Fragment {
             }
         });
 
-        btCadastrar = view.findViewById(R.id.bt_cadastro_cadastrar);
+        btCadastrar = view.findViewById(R.id.bt_cadastro_register); //
         btCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if (etCadastroNome.getText().toString().isEmpty()) {
-                    Toast.makeText(getActivity(), "É necessário preencher um nome", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "You must fill in a name.", Toast.LENGTH_SHORT).show();
                     return;
                 } else if (etCadastroEmpresa.getText().toString().isEmpty()) {
-                    Toast.makeText(getActivity(), "É necessário preencher o nome da empresa", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "You must fill in a company.", Toast.LENGTH_SHORT).show();
+                    return;
+                } else if (editText.getText().toString().isEmpty()) {
+                    Toast.makeText(getActivity(), "You must fill in a phone.", Toast.LENGTH_SHORT).show();
                     return;
                 } else if (etCadastroEmail.getText().toString().isEmpty()) {
-                    Toast.makeText(getActivity(), "É necessário preencher um e-mail", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "You must fill in an e-mail.", Toast.LENGTH_SHORT).show();
                     return;
                 } else if (!fotoCapturada) {
-                    Toast.makeText(getActivity(), "É necessário tirar uma foto", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Need to take a photo.", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 cadastrar();
             }
         });
 
-        btScan = view.findViewById(R.id.bt_cadastro_scan);
-        btScan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), OCRActivity.class);
-                startActivity(intent);
-            }
-        });
+//        btScan = view.findViewById(R.id.bt_cadastro_signIn);
+//        btScan.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getActivity(), OCRActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
-        btLogin = view.findViewById(R.id.bt_cadastro_logar);
+        btLogin = view.findViewById(R.id.bt_cadastro_signUp);
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -241,12 +252,14 @@ public class CadastroFragment extends Fragment {
         progressCadastro(true);
         String nome = etCadastroNome.getText().toString();
         String empresa = etCadastroEmpresa.getText().toString();
+        String phone = etCadastroPhone.getText().toString();
         String email = etCadastroEmail.getText().toString();
         int saldoInicial = 100;
 
         cadastro = new CadastroVO();
         cadastro.setNome(nome);
         cadastro.setEmpresa(empresa);
+        cadastro.setPhone(phone);
         cadastro.setEmail(email);
         cadastro.setSaldo(saldoInicial);
 
@@ -261,7 +274,7 @@ public class CadastroFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == -1) {
-            Toast.makeText(getActivity(), "Foto capturada com sucesso", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Successfully captured photo.", Toast.LENGTH_SHORT).show();
             try {
                 transformToImage();
             } catch (IOException e) {
@@ -291,15 +304,15 @@ public class CadastroFragment extends Fragment {
                         }, 1000);
                         break;
                     case 400:
-                        Toast.makeText(getActivity(), "E-mail não esta em um formato válido", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "E-mail is not in valid format", Toast.LENGTH_SHORT).show();
                         progressCadastro(false);
                         break;
                     case 409:
-                        Toast.makeText(getActivity(), "Este e-mail já está cadastrado.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "This email is already registered.", Toast.LENGTH_SHORT).show();
                         progressCadastro(false);
                         break;
                     case 500:
-                        Toast.makeText(getActivity(), "Banco de dados offline.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Offline database.", Toast.LENGTH_SHORT).show();
                         progressCadastro(false);
                         break;
                 }
@@ -319,7 +332,7 @@ public class CadastroFragment extends Fragment {
             public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 switch (response.code()) {
                     case 201:
-                        Toast.makeText(getActivity(), "Cadastro realizado.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Registration done.", Toast.LENGTH_SHORT).show();
                         progressCadastro(false);
                         Intent intent = new Intent(getActivity(), HUBActivity.class);
                         intent.putExtra(EXTRA_ID_USUARIO, id);
@@ -330,15 +343,15 @@ public class CadastroFragment extends Fragment {
                         progressCadastro(false);
                         break;
                     case 404:
-                        Toast.makeText(getActivity(), "ID inválido.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Invalid id.", Toast.LENGTH_SHORT).show();
                         progressCadastro(false);
                         break;
                     case 409:
-                        Toast.makeText(getActivity(), "Esta foto já foi cadastrada.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "This photo has already been registered.", Toast.LENGTH_SHORT).show();
                         progressCadastro(false);
                         break;
                     case 500:
-                        Toast.makeText(getActivity(), "Foto inválida, favor tirar uma nova.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Invalid photo, please take a new one.", Toast.LENGTH_SHORT).show();
                         erroFoto = 500;
                         progressCadastro(false);
                         break;

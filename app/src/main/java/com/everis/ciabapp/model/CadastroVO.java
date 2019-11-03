@@ -27,6 +27,8 @@ public class CadastroVO implements Parcelable {
     private String email;
     @Json(name = "company")
     private String empresa;
+    @Json(name =  "phone")
+    private String phone;
     @Json(name = "balance")
     private int saldo;
     @Json(name = "order")
@@ -42,6 +44,7 @@ public class CadastroVO implements Parcelable {
         id = in.readInt();
         nome = in.readString();
         empresa = in.readString();
+        phone = in.readString();
         email = in.readString();
         saldo = in.readInt();
         order = in.readString();
@@ -58,6 +61,7 @@ public class CadastroVO implements Parcelable {
         dest.writeInt(id);
         dest.writeString(nome);
         dest.writeString(empresa);
+        dest.writeString(phone);
         dest.writeString(email);
         dest.writeInt(saldo);
         dest.writeString(order);
@@ -86,6 +90,12 @@ public class CadastroVO implements Parcelable {
 
     public void setEmpresa(String empresa) {
         this.empresa = empresa;
+    }
+
+    public String getPhone() { return phone; }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getEmail() {

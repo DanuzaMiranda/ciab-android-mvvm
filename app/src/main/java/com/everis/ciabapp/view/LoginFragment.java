@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,12 +30,15 @@ public class LoginFragment extends Fragment {
     private API mAPI;
     private int id;
     private EmailVO emailVO;
+    private Button btBack;
+    private Fragment cadastroFragment;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_login, container, false);
         initVariable();
+        backLogin();
         return view;
     }
 
@@ -47,7 +51,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (etLoginEmail.getText().toString().isEmpty()) {
-                    Toast.makeText(getActivity(), "É necessário preencher um e-mail", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "You must fill in an e-mail.", Toast.LENGTH_SHORT).show();
                 } else {
                     String email = etLoginEmail.getText().toString();
 
@@ -57,6 +61,22 @@ public class LoginFragment extends Fragment {
                 }
             }
         });
+    }
+
+    private void backLogin() {
+
+        btBack = view.findViewById(R.id.bt_cadastro_signUp);
+        btBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cadastroFragment = new CadastroFragment();
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fl_onboard_fragment, cadastroFragment);
+                fragmentTransaction.commit();
+
+            }
+        });
+
     }
 
 
@@ -80,7 +100,7 @@ public class LoginFragment extends Fragment {
                         }, 1000);
                         break;
                     case 404:
-                        Toast.makeText(getActivity(), "Não existe nenhum usuário com este e-mail.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "There is no user with this e-mail.", Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
