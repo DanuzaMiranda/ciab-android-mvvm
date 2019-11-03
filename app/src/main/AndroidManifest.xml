@@ -64,7 +64,7 @@
             android:name=".view.OCRActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.everis.ciab.UnityPlayerActivity"
+            android:name="com.everis.testbill2.UnityPlayerActivity"
             android:process=":ARScenes"
             android:screenOrientation="portrait">
             <intent-filter>

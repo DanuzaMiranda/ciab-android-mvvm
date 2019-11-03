@@ -3,6 +3,7 @@ package com.everis.ciabapp.view;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -17,7 +18,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-//import com.everis.ciab.UnityPlayerActivity;
+import com.everis.testbill2.UnityPlayerActivity;
 import com.everis.ciabapp.R;
 import com.everis.ciabapp.model.CadastroVO;
 import com.everis.ciabapp.viewmodel.API;
@@ -27,6 +28,7 @@ import com.everis.ciabapp.viewmodel.CustomTypefaceSpan;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
 
 import static android.support.constraint.Constraints.TAG;
 import static com.everis.ciabapp.view.CadastroFragment.EXTRA_ID_USUARIO;
@@ -84,45 +86,47 @@ public class HUBActivity extends AppCompatActivity {
         btGift.setText(misturarFontes("Face", "Pay", true));
 //        btTransfer.setText(misturarFontes("Connecting", "people", false));
 
-//        btTarvel.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(HUBActivity.this, UnityPlayerActivity.class);
-//
-//                startActivity(intent);
-//                //web apliccation
-//            }
-//        });
-//
-//        btBuilding.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(HUBActivity.this, UnityPlayerActivity.class);
-//                intent.putExtra("sceneName", "Financing");
-//                intent.putExtra("playerID", id);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        btPersonal.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(HUBActivity.this, UnityPlayerActivity.class);
-//                intent.putExtra("sceneName", "CardScene");
-//                intent.putExtra("playerID", id);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        btInvoice.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(HUBActivity.this, UnityPlayerActivity.class);
-//                intent.putExtra("sceneName", "Conta_ARScene");
-//                intent.putExtra("playerID", id);
-//                startActivity(intent);
-//            }
-//        });
+        btTarvel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HUBActivity.this, UnityPlayerActivity.class);
+                String url = "https://popuptravel.herokuapp.com/index.html?id=";
+                id = (int) getIntent().getSerializableExtra(EXTRA_ID_USUARIO);
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url + id));
+                startActivity(i);
+            }
+        });
+
+        btBuilding.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HUBActivity.this, UnityPlayerActivity.class);
+                intent.putExtra("sceneName", "Financing");
+                intent.putExtra("playerID", id);
+                startActivity(intent);
+            }
+        });
+
+        btPersonal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HUBActivity.this, UnityPlayerActivity.class);
+                intent.putExtra("sceneName", "CardScene");
+                intent.putExtra("playerID", id);
+                startActivity(intent);
+            }
+        });
+
+        btInvoice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HUBActivity.this, UnityPlayerActivity.class);
+                intent.putExtra("sceneName", "Conta_ARScene");
+                intent.putExtra("playerID", id);
+                startActivity(intent);
+            }
+        });
 
         btGift.setOnClickListener(new View.OnClickListener() {
             @Override

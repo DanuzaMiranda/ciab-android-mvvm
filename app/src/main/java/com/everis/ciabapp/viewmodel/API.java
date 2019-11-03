@@ -16,7 +16,7 @@ import retrofit2.http.Path;
 
 public interface API {
 
-    String BASE_URL = "http://35.247.228.196:8080/";
+    String BASE_URL = "http://35.247.228.196:8080";
 
     //Cadastro de usuário
     @POST("/users")
