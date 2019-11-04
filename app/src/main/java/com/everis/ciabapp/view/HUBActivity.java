@@ -78,13 +78,12 @@ public class HUBActivity extends AppCompatActivity {
 
         View btTarvel= findViewById(R.id.bt_hub_travel);
         View btBuilding = findViewById(R.id.bt_hub_building);
-        View btPersonal = findViewById(R.id.bt_hub_building);
+        View btPersonal = findViewById(R.id.bt_hub_personal);
         View btInvoice = findViewById(R.id.bt_hub_invoice);
         Button btGift = findViewById(R.id.bt_hub_facePay);
         Button btLogout = findViewById(R.id.bt_hud_logout);
 
         btGift.setText(misturarFontes("Face", "Pay", true));
-//        btTransfer.setText(misturarFontes("Connecting", "people", false));
 
         btTarvel.setOnClickListener(new View.OnClickListener() {
             @Override

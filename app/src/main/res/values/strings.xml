@@ -25,9 +25,13 @@
     <string name="hub_total_evercoins">TOTAL EVERCOINS</string>
     <string name="hub_evercoins_cifrao">C$</string>
     <string name="hub_botao_gift">Face Pay\u0020</string>
-    <string name="hub_rethinking_the_cities">Rethinking the cities\u0020</string>
-    <string name="hub_shifting_the_world">Shifting the world\u0020</string>
-    <string name="hub_connecting_people">Connecting people\u0020</string>
+    <string name="bt_hub_travel_2">Travel</string>
+    <string name="bt_hub_building_1">Building</string>
+    <string name="bt_hub_building_2">your life</string>
+    <string name="bt_hub_personal_1">Personal</string>
+    <string name="bt_hub_personal_2">Finances</string>
+    <string name="bt_hub_invoice_1">Invoice</string>
+    <string name="bt_hub_invoice_2">Guide</string>
     <string name="hub_log_out">Log out \u0020 ✖︎</string>
     <string name="hub_check_symbol">\u2714</string>
 

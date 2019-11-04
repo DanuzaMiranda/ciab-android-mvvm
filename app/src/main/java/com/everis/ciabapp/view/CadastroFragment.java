@@ -63,7 +63,6 @@ public class CadastroFragment extends Fragment {
     private EditText etCadastroEmail;
     private CircleImageView btTirarFoto;
     private Button btCadastrar;
-    //private Button btScan;
     private Button btLogin;
     private ProgressBar progressBar;
     private View view;
@@ -145,15 +144,6 @@ public class CadastroFragment extends Fragment {
             }
         });
 
-//        btScan = view.findViewById(R.id.bt_cadastro_signIn);
-//        btScan.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getActivity(), OCRActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-
         btLogin = view.findViewById(R.id.bt_cadastro_signUp);
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,14 +153,6 @@ public class CadastroFragment extends Fragment {
         });
     }
 
-//    private void initOCR() {
-//        if (getArguments() != null) {
-//            ocr = getArguments().getString("data");
-//            String[] ocrSplit = ocr.split("\n");
-//            etCadastroNome.setText(ocrSplit[0]);
-//            etCadastroEmpresa.setText(ocrSplit[1]);
-//        }
-//    }
 
     @Override
     public void onResume() {
