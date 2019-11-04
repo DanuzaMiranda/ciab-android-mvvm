@@ -27,7 +27,6 @@ public class OnboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_onboard);
         ocr = (String) getIntent().getSerializableExtra(EXTRA_OCR_TEXTO);
-//        initOCR();
         initVariables();
     }
 
@@ -51,11 +50,4 @@ public class OnboardActivity extends AppCompatActivity {
 
     }
 
-//    private void initOCR() {
-//        if (ocr != null) {
-//            Bundle data = new Bundle();
-//            data.putString(EXTRA_BUNDLE_OCR, ocr);
-//            cadastroFragment.setArguments(data);
-//        }
-//    }
 }

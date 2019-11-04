@@ -141,7 +141,7 @@ public class TransferActivity extends AppCompatActivity {
             public void onResponse(@NonNull Call<CadastroVO> call, @NonNull Response<CadastroVO> response) {
                 switch (response.code()) {
                     case 200:
-                        Toast.makeText(TransferActivity.this, "Usuário encontrado.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TransferActivity.this, "User found.", Toast.LENGTH_SHORT).show();
                         cadastro = response.body();
                         if (cadastro != null) {
                             debtorId = cadastro.getId();
@@ -150,18 +150,18 @@ public class TransferActivity extends AppCompatActivity {
                         }
                         break;
                     case 400:
-                        Toast.makeText(TransferActivity.this, "Falha ao mandar imagem.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TransferActivity.this, "Failed to send image.", Toast.LENGTH_SHORT).show();
                         goBack();
                         break;
                     case 404:
-                        Toast.makeText(TransferActivity.this, "Nenhum usuário encontrado.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TransferActivity.this, "No user found.", Toast.LENGTH_SHORT).show();
                         goBack();
                         break;
                     case 409:
-                        Toast.makeText(TransferActivity.this, "Saldo insuficiente.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TransferActivity.this, "Insufficient funds.", Toast.LENGTH_SHORT).show();
                         goBack();
                     case 500:
-                        Toast.makeText(TransferActivity.this, "Face inválida, faça o reconhecimento novamente.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TransferActivity.this, "Invalid face, make recognition again.", Toast.LENGTH_SHORT).show();
                         goBack();
                         break;
                 }
@@ -185,15 +185,15 @@ public class TransferActivity extends AppCompatActivity {
         progressRecognition(false);
         AlertDialog.Builder builder = new AlertDialog.Builder(TransferActivity.this);
         builder.setCancelable(true);
-        builder.setTitle("Confirmar Transferência");
-        builder.setMessage("Você quer realizar transferência com " + debtorName + "?");
-        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+        builder.setTitle("Confirm Transfer");
+        builder.setMessage("Do you want to transfer to " + debtorName + "?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 transfer();
             }
         });
-        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 goBack();
@@ -214,13 +214,13 @@ public class TransferActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case 404:
-                        Toast.makeText(TransferActivity.this, "Usuário encontrado.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TransferActivity.this, "User found.", Toast.LENGTH_SHORT).show();
                         Intent goBack = new Intent(TransferActivity.this, HUBActivity.class);
                         startActivity(goBack);
                         finish();
                         break;
                     case 409:
-                        Toast.makeText(TransferActivity.this, "Saldo insulficiente.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TransferActivity.this, "Insufficient funds.", Toast.LENGTH_SHORT).show();
                         Intent goBack2 = new Intent(TransferActivity.this, HUBActivity.class);
                         startActivity(goBack2);
                         finish();
